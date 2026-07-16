@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -244,23 +243,28 @@
       color: #4b4438;
     }
 
+    /* =========================================
+       FLIP CARDS
+    ========================================== */
+
     .terms-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 20px;
+      align-items: stretch;
     }
 
     .term-card {
       position: relative;
-      min-height: 260px;
-      perspective: 1100px;
+      min-height: 410px;
+      perspective: 1200px;
     }
 
     .term-card-inner {
       position: relative;
       width: 100%;
-      height: 100%;
-      min-height: 260px;
+      height: 410px;
+      min-height: 410px;
       transition: transform 0.55s ease;
       transform-style: preserve-3d;
     }
@@ -274,15 +278,18 @@
       inset: 0;
       display: flex;
       flex-direction: column;
+      width: 100%;
+      height: 100%;
       padding: 27px;
       border: 1px solid var(--border);
       border-radius: var(--radius-large);
       backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
     .term-card-front {
-      justify-content: space-between;
       background: var(--surface);
     }
 
@@ -342,6 +349,7 @@
     }
 
     .term-button {
+      flex-shrink: 0;
       width: 100%;
       margin-top: auto;
       padding: 12px 17px;
@@ -357,10 +365,19 @@
     }
 
     .term-card-back .term-button {
-      margin-top: 20px;
+      flex-shrink: 0;
+      margin-top: auto;
       background: var(--purdue-gold);
       color: var(--purdue-black);
     }
+
+    .term-card-back .term-button:hover {
+      background: #decda9;
+    }
+
+    /* =========================================
+       MATCHING ACTIVITY
+    ========================================== */
 
     .activity-panel {
       padding: 34px;
@@ -459,16 +476,20 @@
     }
 
     .feedback.success {
+      border: 1px solid #8ac2a0;
       background: var(--success-soft);
       color: #175934;
-      border: 1px solid #8ac2a0;
     }
 
     .feedback.error {
+      border: 1px solid #d5a0a2;
       background: var(--error-soft);
       color: #7f2c2f;
-      border: 1px solid #d5a0a2;
     }
+
+    /* =========================================
+       SCENARIO
+    ========================================== */
 
     .scenario {
       padding: 36px;
@@ -540,6 +561,10 @@
       color: var(--purdue-gold);
     }
 
+    /* =========================================
+       PROGRESS
+    ========================================== */
+
     .progress-wrap {
       margin-top: 42px;
       padding: 26px;
@@ -609,6 +634,10 @@
       font-size: 0.82rem;
     }
 
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+
     @media (max-width: 760px) {
       .hero {
         padding: 44px 0;
@@ -621,6 +650,15 @@
       .terms-grid,
       .takeaway-grid {
         grid-template-columns: 1fr;
+      }
+
+      .term-card {
+        min-height: 390px;
+      }
+
+      .term-card-inner {
+        height: 390px;
+        min-height: 390px;
       }
 
       .match-row {
@@ -643,9 +681,17 @@
         width: calc(100% - 28px);
       }
 
-      .term-card,
+      .term-card {
+        min-height: 440px;
+      }
+
       .term-card-inner {
-        min-height: 300px;
+        height: 440px;
+        min-height: 440px;
+      }
+
+      .term-card-face {
+        padding: 23px;
       }
 
       .activity-actions {
@@ -655,6 +701,18 @@
       .primary-button,
       .secondary-button {
         width: 100%;
+      }
+
+      .progress-header {
+        display: block;
+      }
+
+      .progress-header span {
+        display: block;
+      }
+
+      .progress-header span:last-child {
+        margin-top: 4px;
       }
     }
 
@@ -707,7 +765,9 @@
 
           <div class="hero-stat">
             <span class="hero-stat-label">Key Terms</span>
-            <span class="hero-stat-value">8 customer experience concepts</span>
+            <span class="hero-stat-value">
+              8 customer experience concepts
+            </span>
           </div>
 
           <div class="hero-stat">
@@ -720,14 +780,16 @@
     </section>
 
 
-    <!-- INTRODUCTION -->
+    <!-- KEY TERMS -->
     <section class="lesson-section">
       <div class="content-width">
 
         <div class="section-intro">
           <p class="eyebrow">Why These Terms Matter</p>
 
-          <h2>A shared vocabulary helps teams create a shared experience.</h2>
+          <h2>
+            A shared vocabulary helps teams create a shared experience.
+          </h2>
 
           <p>
             Customer experience involves many departments, decisions and
@@ -748,16 +810,18 @@
         </div>
 
 
-        <!-- TERM CARDS -->
         <div class="terms-grid">
 
+          <!-- TERM 1 -->
           <article class="term-card" data-term-card>
             <div class="term-card-inner">
 
               <div class="term-card-face term-card-front">
                 <div>
                   <div class="term-number">01</div>
+
                   <h3>Customer Experience</h3>
+
                   <p class="term-prompt">
                     What overall impression does the customer develop?
                   </p>
@@ -773,18 +837,21 @@
               </div>
 
               <div class="term-card-face term-card-back">
-                <p class="definition-label">Definition</p>
+                <div>
+                  <p class="definition-label">Definition</p>
 
-                <p class="definition">
-                  The customer’s overall perception of an organization based
-                  on every interaction before, during and after a purchase.
-                </p>
+                  <p class="definition">
+                    The customer’s overall perception of an organization based
+                    on every interaction before, during and after a purchase.
+                  </p>
 
-                <p class="example">
-                  <strong>Agricultural example:</strong> A producer’s impression
-                  is shaped by product quality, delivery communication, sales
-                  support and how quickly a problem is resolved.
-                </p>
+                  <p class="example">
+                    <strong>Agricultural example:</strong> A producer’s
+                    impression is shaped by product quality, delivery
+                    communication, sales support and how quickly a problem is
+                    resolved.
+                  </p>
+                </div>
 
                 <button class="term-button" type="button">
                   Return to Term
@@ -795,13 +862,16 @@
           </article>
 
 
+          <!-- TERM 2 -->
           <article class="term-card" data-term-card>
             <div class="term-card-inner">
 
               <div class="term-card-face term-card-front">
                 <div>
                   <div class="term-number">02</div>
+
                   <h3>Customer Service</h3>
+
                   <p class="term-prompt">
                     How does the organization respond to a specific need?
                   </p>
@@ -817,19 +887,21 @@
               </div>
 
               <div class="term-card-face term-card-back">
-                <p class="definition-label">Definition</p>
+                <div>
+                  <p class="definition-label">Definition</p>
 
-                <p class="definition">
-                  The direct assistance or support an organization provides
-                  before, during or after a customer purchases a product or
-                  service.
-                </p>
+                  <p class="definition">
+                    The direct assistance or support an organization provides
+                    before, during or after a customer purchases a product or
+                    service.
+                  </p>
 
-                <p class="example">
-                  <strong>Agricultural example:</strong> A service
-                  representative helps a customer identify a replacement part
-                  for equipment during planting season.
-                </p>
+                  <p class="example">
+                    <strong>Agricultural example:</strong> A service
+                    representative helps a customer identify a replacement
+                    part for equipment during planting season.
+                  </p>
+                </div>
 
                 <button class="term-button" type="button">
                   Return to Term
@@ -840,13 +912,16 @@
           </article>
 
 
+          <!-- TERM 3 -->
           <article class="term-card" data-term-card>
             <div class="term-card-inner">
 
               <div class="term-card-face term-card-front">
                 <div>
                   <div class="term-number">03</div>
+
                   <h3>Touchpoint</h3>
+
                   <p class="term-prompt">
                     Where does the customer encounter the organization?
                   </p>
@@ -862,18 +937,21 @@
               </div>
 
               <div class="term-card-face term-card-back">
-                <p class="definition-label">Definition</p>
+                <div>
+                  <p class="definition-label">Definition</p>
 
-                <p class="definition">
-                  Any point at which a customer interacts with an organization,
-                  employee, product, service or communication channel.
-                </p>
+                  <p class="definition">
+                    Any point at which a customer interacts with an
+                    organization, employee, product, service or communication
+                    channel.
+                  </p>
 
-                <p class="example">
-                  <strong>Agricultural example:</strong> A website visit,
-                  conversation with a sales representative, invoice, delivery
-                  and service call are all customer touchpoints.
-                </p>
+                  <p class="example">
+                    <strong>Agricultural example:</strong> A website visit,
+                    conversation with a sales representative, invoice, delivery
+                    and service call are all customer touchpoints.
+                  </p>
+                </div>
 
                 <button class="term-button" type="button">
                   Return to Term
@@ -884,13 +962,16 @@
           </article>
 
 
+          <!-- TERM 4 -->
           <article class="term-card" data-term-card>
             <div class="term-card-inner">
 
               <div class="term-card-face term-card-front">
                 <div>
                   <div class="term-number">04</div>
+
                   <h3>Customer Journey</h3>
+
                   <p class="term-prompt">
                     What path does the customer take over time?
                   </p>
@@ -906,18 +987,20 @@
               </div>
 
               <div class="term-card-face term-card-back">
-                <p class="definition-label">Definition</p>
+                <div>
+                  <p class="definition-label">Definition</p>
 
-                <p class="definition">
-                  The complete sequence of stages and interactions a customer
-                  experiences throughout a relationship with an organization.
-                </p>
+                  <p class="definition">
+                    The complete sequence of stages and interactions a customer
+                    experiences throughout a relationship with an organization.
+                  </p>
 
-                <p class="example">
-                  <strong>Agricultural example:</strong> A customer researches
-                  a seed product, contacts a dealer, places an order, receives
-                  delivery and later asks for technical support.
-                </p>
+                  <p class="example">
+                    <strong>Agricultural example:</strong> A customer researches
+                    a seed product, contacts a dealer, places an order, receives
+                    delivery and later asks for technical support.
+                  </p>
+                </div>
 
                 <button class="term-button" type="button">
                   Return to Term
@@ -928,13 +1011,16 @@
           </article>
 
 
+          <!-- TERM 5 -->
           <article class="term-card" data-term-card>
             <div class="term-card-inner">
 
               <div class="term-card-face term-card-front">
                 <div>
                   <div class="term-number">05</div>
+
                   <h3>Moment of Truth</h3>
+
                   <p class="term-prompt">
                     Which interaction has an unusually strong impact?
                   </p>
@@ -950,18 +1036,20 @@
               </div>
 
               <div class="term-card-face term-card-back">
-                <p class="definition-label">Definition</p>
+                <div>
+                  <p class="definition-label">Definition</p>
 
-                <p class="definition">
-                  A critical interaction that significantly strengthens or
-                  weakens the customer’s perception of an organization.
-                </p>
+                  <p class="definition">
+                    A critical interaction that significantly strengthens or
+                    weakens the customer’s perception of an organization.
+                  </p>
 
-                <p class="example">
-                  <strong>Agricultural example:</strong> Equipment fails during
-                  harvest, and the supplier’s response determines whether the
-                  customer feels supported or abandoned.
-                </p>
+                  <p class="example">
+                    <strong>Agricultural example:</strong> Equipment fails
+                    during harvest, and the supplier’s response determines
+                    whether the customer feels supported or abandoned.
+                  </p>
+                </div>
 
                 <button class="term-button" type="button">
                   Return to Term
@@ -972,13 +1060,16 @@
           </article>
 
 
+          <!-- TERM 6 -->
           <article class="term-card" data-term-card>
             <div class="term-card-inner">
 
               <div class="term-card-face term-card-front">
                 <div>
                   <div class="term-number">06</div>
+
                   <h3>Customer Friction</h3>
+
                   <p class="term-prompt">
                     What makes the experience more difficult than necessary?
                   </p>
@@ -994,18 +1085,20 @@
               </div>
 
               <div class="term-card-face term-card-back">
-                <p class="definition-label">Definition</p>
+                <div>
+                  <p class="definition-label">Definition</p>
 
-                <p class="definition">
-                  Any obstacle, delay, confusion or unnecessary effort that
-                  makes it harder for a customer to accomplish a goal.
-                </p>
+                  <p class="definition">
+                    Any obstacle, delay, confusion or unnecessary effort that
+                    makes it harder for a customer to accomplish a goal.
+                  </p>
 
-                <p class="example">
-                  <strong>Agricultural example:</strong> A customer must call
-                  three departments before finding someone who can confirm an
-                  order’s delivery date.
-                </p>
+                  <p class="example">
+                    <strong>Agricultural example:</strong> A customer must call
+                    three departments before finding someone who can confirm
+                    an order’s delivery date.
+                  </p>
+                </div>
 
                 <button class="term-button" type="button">
                   Return to Term
@@ -1016,13 +1109,16 @@
           </article>
 
 
+          <!-- TERM 7 -->
           <article class="term-card" data-term-card>
             <div class="term-card-inner">
 
               <div class="term-card-face term-card-front">
                 <div>
                   <div class="term-number">07</div>
+
                   <h3>Internal Customer</h3>
+
                   <p class="term-prompt">
                     Who inside the organization depends on your work?
                   </p>
@@ -1038,18 +1134,20 @@
               </div>
 
               <div class="term-card-face term-card-back">
-                <p class="definition-label">Definition</p>
+                <div>
+                  <p class="definition-label">Definition</p>
 
-                <p class="definition">
-                  An employee, team or department within the organization that
-                  relies on another person or team to complete its work.
-                </p>
+                  <p class="definition">
+                    An employee, team or department within the organization
+                    that relies on another person or team to complete its work.
+                  </p>
 
-                <p class="example">
-                  <strong>Agricultural example:</strong> The sales team relies
-                  on operations for accurate inventory information before
-                  making delivery commitments to customers.
-                </p>
+                  <p class="example">
+                    <strong>Agricultural example:</strong> The sales team relies
+                    on operations for accurate inventory information before
+                    making delivery commitments to customers.
+                  </p>
+                </div>
 
                 <button class="term-button" type="button">
                   Return to Term
@@ -1060,13 +1158,16 @@
           </article>
 
 
+          <!-- TERM 8 -->
           <article class="term-card" data-term-card>
             <div class="term-card-inner">
 
               <div class="term-card-face term-card-front">
                 <div>
                   <div class="term-number">08</div>
+
                   <h3>Service Recovery</h3>
+
                   <p class="term-prompt">
                     What happens after the organization makes a mistake?
                   </p>
@@ -1082,18 +1183,21 @@
               </div>
 
               <div class="term-card-face term-card-back">
-                <p class="definition-label">Definition</p>
+                <div>
+                  <p class="definition-label">Definition</p>
 
-                <p class="definition">
-                  The actions an organization takes to resolve a problem,
-                  restore confidence and rebuild the customer relationship.
-                </p>
+                  <p class="definition">
+                    The actions an organization takes to resolve a problem,
+                    restore confidence and rebuild the customer relationship.
+                  </p>
 
-                <p class="example">
-                  <strong>Agricultural example:</strong> After sending the wrong
-                  product, the supplier acknowledges the error, arranges urgent
-                  replacement delivery and follows up afterward.
-                </p>
+                  <p class="example">
+                    <strong>Agricultural example:</strong> After sending the
+                    wrong product, the supplier acknowledges the error,
+                    arranges urgent replacement delivery and follows up
+                    afterward.
+                  </p>
+                </div>
 
                 <button class="term-button" type="button">
                   Return to Term
@@ -1106,8 +1210,9 @@
         </div>
 
 
-        <!-- PROGRESS -->
+        <!-- TERM PROGRESS -->
         <div class="progress-wrap" aria-live="polite">
+
           <div class="progress-header">
             <span>Term Exploration Progress</span>
             <span id="termProgressText">0 of 8 explored</span>
@@ -1125,10 +1230,14 @@
             <div class="progress-bar" id="termProgressBar"></div>
           </div>
 
-          <p class="completion-message" id="termCompletionMessage">
+          <p
+            class="completion-message"
+            id="termCompletionMessage"
+          >
             Excellent—you have explored all eight key terms. Continue to the
             matching activity below.
           </p>
+
         </div>
 
       </div>
@@ -1166,6 +1275,7 @@
             <div class="match-row" data-match-row>
               <div>
                 <div class="match-term">Situation 1</div>
+
                 <div>
                   A customer receives three different delivery estimates from
                   three employees.
@@ -1178,9 +1288,15 @@
               >
                 <option value="">Choose a term</option>
                 <option value="touchpoint">Touchpoint</option>
-                <option value="customer-friction">Customer Friction</option>
-                <option value="service-recovery">Service Recovery</option>
-                <option value="internal-customer">Internal Customer</option>
+                <option value="customer-friction">
+                  Customer Friction
+                </option>
+                <option value="service-recovery">
+                  Service Recovery
+                </option>
+                <option value="internal-customer">
+                  Internal Customer
+                </option>
               </select>
             </div>
 
@@ -1188,6 +1304,7 @@
             <div class="match-row" data-match-row>
               <div>
                 <div class="match-term">Situation 2</div>
+
                 <div>
                   A delayed shipment threatens planting plans, and the
                   supplier’s response determines whether the relationship
@@ -1200,9 +1317,15 @@
                 data-answer="moment-of-truth"
               >
                 <option value="">Choose a term</option>
-                <option value="customer-journey">Customer Journey</option>
-                <option value="moment-of-truth">Moment of Truth</option>
-                <option value="customer-service">Customer Service</option>
+                <option value="customer-journey">
+                  Customer Journey
+                </option>
+                <option value="moment-of-truth">
+                  Moment of Truth
+                </option>
+                <option value="customer-service">
+                  Customer Service
+                </option>
                 <option value="touchpoint">Touchpoint</option>
               </select>
             </div>
@@ -1211,6 +1334,7 @@
             <div class="match-row" data-match-row>
               <div>
                 <div class="match-term">Situation 3</div>
+
                 <div>
                   The shipping team needs accurate information from inventory
                   before it can prepare an order.
@@ -1222,10 +1346,18 @@
                 data-answer="internal-customer"
               >
                 <option value="">Choose a term</option>
-                <option value="service-recovery">Service Recovery</option>
-                <option value="customer-experience">Customer Experience</option>
-                <option value="internal-customer">Internal Customer</option>
-                <option value="moment-of-truth">Moment of Truth</option>
+                <option value="service-recovery">
+                  Service Recovery
+                </option>
+                <option value="customer-experience">
+                  Customer Experience
+                </option>
+                <option value="internal-customer">
+                  Internal Customer
+                </option>
+                <option value="moment-of-truth">
+                  Moment of Truth
+                </option>
               </select>
             </div>
 
@@ -1233,6 +1365,7 @@
             <div class="match-row" data-match-row>
               <div>
                 <div class="match-term">Situation 4</div>
+
                 <div>
                   After an incorrect order is delivered, the company apologizes,
                   replaces it immediately and follows up the next day.
@@ -1244,10 +1377,18 @@
                 data-answer="service-recovery"
               >
                 <option value="">Choose a term</option>
-                <option value="customer-friction">Customer Friction</option>
-                <option value="service-recovery">Service Recovery</option>
-                <option value="customer-journey">Customer Journey</option>
-                <option value="customer-service">Customer Service</option>
+                <option value="customer-friction">
+                  Customer Friction
+                </option>
+                <option value="service-recovery">
+                  Service Recovery
+                </option>
+                <option value="customer-journey">
+                  Customer Journey
+                </option>
+                <option value="customer-service">
+                  Customer Service
+                </option>
               </select>
             </div>
 
@@ -1255,6 +1396,7 @@
             <div class="match-row" data-match-row>
               <div>
                 <div class="match-term">Situation 5</div>
+
                 <div>
                   A customer first sees an advertisement, visits a website,
                   speaks with a representative, purchases and later requests
@@ -1268,15 +1410,22 @@
               >
                 <option value="">Choose a term</option>
                 <option value="touchpoint">Touchpoint</option>
-                <option value="customer-service">Customer Service</option>
-                <option value="customer-journey">Customer Journey</option>
-                <option value="moment-of-truth">Moment of Truth</option>
+                <option value="customer-service">
+                  Customer Service
+                </option>
+                <option value="customer-journey">
+                  Customer Journey
+                </option>
+                <option value="moment-of-truth">
+                  Moment of Truth
+                </option>
               </select>
             </div>
 
           </div>
 
           <div class="activity-actions">
+
             <button
               class="primary-button"
               type="button"
@@ -1292,6 +1441,7 @@
             >
               Reset Activity
             </button>
+
           </div>
 
           <div
@@ -1324,7 +1474,10 @@
 
         <div class="scenario">
 
-          <p class="eyebrow" style="color: var(--purdue-gold);">
+          <p
+            class="eyebrow"
+            style="color: var(--purdue-gold);"
+          >
             Scenario Challenge
           </p>
 
@@ -1408,7 +1561,9 @@
         <div class="section-intro">
           <p class="eyebrow">Key Takeaways</p>
 
-          <h2>Customer experience is created one interaction at a time.</h2>
+          <h2>
+            Customer experience is created one interaction at a time.
+          </h2>
 
           <p>
             Keep these three ideas in mind as you continue through the module.
@@ -1419,6 +1574,7 @@
 
           <div class="takeaway-card">
             <h3>Experience Is Cumulative</h3>
+
             <p>
               Customers form opinions through the complete journey, not only
               through one service interaction.
@@ -1427,6 +1583,7 @@
 
           <div class="takeaway-card">
             <h3>Every Role Contributes</h3>
+
             <p>
               Internal communication and coordination affect what the external
               customer ultimately experiences.
@@ -1435,6 +1592,7 @@
 
           <div class="takeaway-card">
             <h3>Recovery Builds Trust</h3>
+
             <p>
               A thoughtful response to a problem can strengthen a relationship
               rather than simply repair a transaction.
@@ -1458,29 +1616,44 @@
     (function () {
       "use strict";
 
+      /* =========================================
+         FLIP CARDS AND PROGRESS
+      ========================================== */
+
       const termCards = Array.from(
         document.querySelectorAll("[data-term-card]")
       );
 
       const exploredCards = new Set();
 
-      const progressText = document.getElementById("termProgressText");
-      const progressBar = document.getElementById("termProgressBar");
-      const progressTrack = document.getElementById("termProgressTrack");
-      const completionMessage = document.getElementById(
-        "termCompletionMessage"
-      );
+      const progressText =
+        document.getElementById("termProgressText");
+
+      const progressBar =
+        document.getElementById("termProgressBar");
+
+      const progressTrack =
+        document.getElementById("termProgressTrack");
+
+      const completionMessage =
+        document.getElementById("termCompletionMessage");
 
       function updateTermProgress() {
         const explored = exploredCards.size;
         const total = termCards.length;
-        const percentage = total > 0 ? (explored / total) * 100 : 0;
+
+        const percentage =
+          total > 0 ? (explored / total) * 100 : 0;
 
         progressText.textContent =
           explored + " of " + total + " explored";
 
         progressBar.style.width = percentage + "%";
-        progressTrack.setAttribute("aria-valuenow", String(explored));
+
+        progressTrack.setAttribute(
+          "aria-valuenow",
+          String(explored)
+        );
 
         if (explored === total) {
           completionMessage.classList.add("show");
@@ -1488,14 +1661,18 @@
       }
 
       termCards.forEach(function (card, index) {
-        const buttons = card.querySelectorAll(".term-button");
+        const buttons =
+          card.querySelectorAll(".term-button");
 
         buttons.forEach(function (button) {
           button.addEventListener("click", function () {
-            const isFlipped = card.classList.toggle("is-flipped");
-            const frontButton = card.querySelector(
-              ".term-card-front .term-button"
-            );
+            const isFlipped =
+              card.classList.toggle("is-flipped");
+
+            const frontButton =
+              card.querySelector(
+                ".term-card-front .term-button"
+              );
 
             frontButton.setAttribute(
               "aria-expanded",
@@ -1511,112 +1688,164 @@
       });
 
 
+      /* =========================================
+         MATCHING ACTIVITY
+      ========================================== */
+
       const matchRows = Array.from(
         document.querySelectorAll("[data-match-row]")
       );
 
-      const checkMatchesButton = document.getElementById("checkMatches");
-      const resetMatchesButton = document.getElementById("resetMatches");
-      const matchFeedback = document.getElementById("matchFeedback");
+      const checkMatchesButton =
+        document.getElementById("checkMatches");
 
-      checkMatchesButton.addEventListener("click", function () {
-        let correctCount = 0;
-        let unansweredCount = 0;
+      const resetMatchesButton =
+        document.getElementById("resetMatches");
 
-        matchRows.forEach(function (row) {
-          const select = row.querySelector("select");
-          const correctAnswer = select.dataset.answer;
-          const selectedAnswer = select.value;
+      const matchFeedback =
+        document.getElementById("matchFeedback");
 
-          row.classList.remove("is-correct", "is-incorrect");
+      checkMatchesButton.addEventListener(
+        "click",
+        function () {
+          let correctCount = 0;
+          let unansweredCount = 0;
 
-          if (!selectedAnswer) {
-            unansweredCount += 1;
-            row.classList.add("is-incorrect");
-            return;
-          }
+          matchRows.forEach(function (row) {
+            const select =
+              row.querySelector("select");
 
-          if (selectedAnswer === correctAnswer) {
-            correctCount += 1;
-            row.classList.add("is-correct");
-          } else {
-            row.classList.add("is-incorrect");
-          }
-        });
+            const correctAnswer =
+              select.dataset.answer;
 
-        matchFeedback.className = "feedback show";
+            const selectedAnswer =
+              select.value;
 
-        if (correctCount === matchRows.length) {
-          matchFeedback.classList.add("success");
-          matchFeedback.textContent =
-            "Excellent work. You matched all five situations correctly.";
-        } else {
-          matchFeedback.classList.add("error");
-
-          if (unansweredCount > 0) {
-            matchFeedback.textContent =
-              "You answered " +
-              correctCount +
-              " of " +
-              matchRows.length +
-              " correctly. Complete every situation and review the highlighted rows.";
-          } else {
-            matchFeedback.textContent =
-              "You answered " +
-              correctCount +
-              " of " +
-              matchRows.length +
-              " correctly. Review the highlighted rows and try again.";
-          }
-        }
-      });
-
-      resetMatchesButton.addEventListener("click", function () {
-        matchRows.forEach(function (row) {
-          row.classList.remove("is-correct", "is-incorrect");
-          row.querySelector("select").value = "";
-        });
-
-        matchFeedback.className = "feedback";
-        matchFeedback.textContent = "";
-      });
-
-
-      const scenarioOptions = Array.from(
-        document.querySelectorAll(".scenario-option")
-      );
-
-      const scenarioFeedback = document.getElementById(
-        "scenarioFeedback"
-      );
-
-      scenarioOptions.forEach(function (option) {
-        option.addEventListener("click", function () {
-          scenarioOptions.forEach(function (item) {
-            item.classList.remove(
-              "is-selected",
+            row.classList.remove(
               "is-correct",
               "is-incorrect"
             );
+
+            if (!selectedAnswer) {
+              unansweredCount += 1;
+              row.classList.add("is-incorrect");
+              return;
+            }
+
+            if (selectedAnswer === correctAnswer) {
+              correctCount += 1;
+              row.classList.add("is-correct");
+            } else {
+              row.classList.add("is-incorrect");
+            }
           });
 
-          option.classList.add("is-selected");
+          matchFeedback.className =
+            "feedback show";
 
-          const isCorrect = option.dataset.correct === "true";
-          const feedback = option.dataset.feedback;
+          if (correctCount === matchRows.length) {
+            matchFeedback.classList.add("success");
 
-          if (isCorrect) {
-            option.classList.add("is-correct");
-            scenarioFeedback.innerHTML =
-              "<strong>Strong response.</strong> " + feedback;
+            matchFeedback.textContent =
+              "Excellent work. You matched all five situations correctly.";
           } else {
-            option.classList.add("is-incorrect");
-            scenarioFeedback.innerHTML =
-              "<strong>Consider another response.</strong> " + feedback;
-          }
+            matchFeedback.classList.add("error");
 
-          scenarioFeedback.classList.add("show");
-        });
+            if (unansweredCount > 0) {
+              matchFeedback.textContent =
+                "You answered " +
+                correctCount +
+                " of " +
+                matchRows.length +
+                " correctly. Complete every situation and review the highlighted rows.";
+            } else {
+              matchFeedback.textContent =
+                "You answered " +
+                correctCount +
+                " of " +
+                matchRows.length +
+                " correctly. Review the highlighted rows and try again.";
+            }
+          }
+        }
+      );
+
+      resetMatchesButton.addEventListener(
+        "click",
+        function () {
+          matchRows.forEach(function (row) {
+            row.classList.remove(
+              "is-correct",
+              "is-incorrect"
+            );
+
+            row.querySelector("select").value = "";
+          });
+
+          matchFeedback.className = "feedback";
+          matchFeedback.textContent = "";
+        }
+      );
+
+
+      /* =========================================
+         SCENARIO ACTIVITY
+      ========================================== */
+
+      const scenarioOptions = Array.from(
+        document.querySelectorAll(
+          ".scenario-option"
+        )
+      );
+
+      const scenarioFeedback =
+        document.getElementById(
+          "scenarioFeedback"
+        );
+
+      scenarioOptions.forEach(function (option) {
+        option.addEventListener(
+          "click",
+          function () {
+            scenarioOptions.forEach(
+              function (item) {
+                item.classList.remove(
+                  "is-selected",
+                  "is-correct",
+                  "is-incorrect"
+                );
+              }
+            );
+
+            option.classList.add("is-selected");
+
+            const isCorrect =
+              option.dataset.correct === "true";
+
+            const feedback =
+              option.dataset.feedback;
+
+            if (isCorrect) {
+              option.classList.add("is-correct");
+
+              scenarioFeedback.innerHTML =
+                "<strong>Strong response.</strong> " +
+                feedback;
+            } else {
+              option.classList.add(
+                "is-incorrect"
+              );
+
+              scenarioFeedback.innerHTML =
+                "<strong>Consider another response.</strong> " +
+                feedback;
+            }
+
+            scenarioFeedback.classList.add(
+              "show"
+            );
+          }
+        );
       });
 
       updateTermProgress();
@@ -1624,4 +1853,3 @@
   </script>
 </body>
 </html>
-```
