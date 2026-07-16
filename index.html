@@ -1,0 +1,1627 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Customer Experience: Key Terms</title>
+
+  <style>
+    :root {
+      --purdue-black: #000000;
+      --purdue-gold: #cfb991;
+      --purdue-dark-gold: #8e6f3e;
+      --background: #f4f4f1;
+      --surface: #ffffff;
+      --surface-soft: #f3f0e9;
+      --text: #252525;
+      --muted: #5d5d5d;
+      --border: #deddd8;
+      --success: #257a4b;
+      --success-soft: #e7f4ec;
+      --error: #a63d40;
+      --error-soft: #fae9e9;
+      --focus: #2f6f9f;
+      --radius-large: 22px;
+      --radius-medium: 15px;
+      --radius-small: 9px;
+      --shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    select:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .page-shell {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .content-width {
+      width: calc(100% - 40px);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 58px 0;
+      background: var(--purdue-black);
+      color: #ffffff;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(250px, 0.75fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--purdue-dark-gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow {
+      color: var(--purdue-gold);
+    }
+
+    .module-label {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 7px 13px;
+      border: 1px solid rgba(207, 185, 145, 0.65);
+      border-radius: 999px;
+      color: var(--purdue-gold);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      overflow-wrap: anywhere;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.25rem, 6vw, 3.75rem);
+      line-height: 1.04;
+      letter-spacing: -0.045em;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.75rem, 4vw, 2.55rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.22rem;
+      line-height: 1.3;
+    }
+
+    .hero-copy {
+      max-width: 610px;
+      margin: 0;
+      color: #e3e3e3;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .hero-card {
+      padding: 26px;
+      background: var(--surface);
+      border-radius: var(--radius-large);
+      color: var(--text);
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-card-number {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 17px;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--purdue-black);
+      color: var(--purdue-gold);
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+
+    .hero-stat {
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stat:first-of-type {
+      border-top: 0;
+    }
+
+    .hero-stat-label {
+      display: block;
+      color: #777777;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-stat-value {
+      display: block;
+      margin-top: 3px;
+      font-weight: 700;
+    }
+
+    .lesson-section {
+      padding: 66px 0;
+    }
+
+    .lesson-section.white {
+      background: var(--surface);
+    }
+
+    .section-intro {
+      max-width: 700px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+
+    .section-intro p:last-child {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .instruction-box {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+      padding: 22px;
+      border: 1px solid #d7c9a9;
+      border-radius: var(--radius-medium);
+      background: #f7f2e6;
+    }
+
+    .instruction-icon {
+      display: grid;
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--purdue-black);
+      color: var(--purdue-gold);
+      font-weight: 800;
+    }
+
+    .instruction-box p {
+      margin: 0;
+      color: #4b4438;
+    }
+
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .term-card {
+      position: relative;
+      min-height: 260px;
+      perspective: 1100px;
+    }
+
+    .term-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      transition: transform 0.55s ease;
+      transform-style: preserve-3d;
+    }
+
+    .term-card.is-flipped .term-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .term-card-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      backface-visibility: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .term-card-front {
+      justify-content: space-between;
+      background: var(--surface);
+    }
+
+    .term-card-back {
+      background: var(--purdue-black);
+      color: #ffffff;
+      transform: rotateY(180deg);
+    }
+
+    .term-number {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      margin-bottom: 24px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--purdue-gold);
+      color: var(--purdue-black);
+      font-weight: 800;
+    }
+
+    .term-card-front h3 {
+      font-size: 1.45rem;
+    }
+
+    .term-prompt {
+      margin: 0 0 22px;
+      color: var(--muted);
+    }
+
+    .definition-label {
+      margin: 0 0 7px;
+      color: var(--purdue-gold);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .definition {
+      margin: 0 0 18px;
+      color: #f0f0f0;
+    }
+
+    .example {
+      margin: 0;
+      padding: 15px;
+      border-left: 4px solid var(--purdue-gold);
+      border-radius: 0 10px 10px 0;
+      background: #1b1b1b;
+      color: #dddddd;
+      font-size: 0.93rem;
+    }
+
+    .example strong {
+      color: var(--purdue-gold);
+    }
+
+    .term-button {
+      width: 100%;
+      margin-top: auto;
+      padding: 12px 17px;
+      border: 0;
+      border-radius: var(--radius-small);
+      background: var(--purdue-black);
+      color: #ffffff;
+      font-weight: 800;
+    }
+
+    .term-button:hover {
+      background: #252525;
+    }
+
+    .term-card-back .term-button {
+      margin-top: 20px;
+      background: var(--purdue-gold);
+      color: var(--purdue-black);
+    }
+
+    .activity-panel {
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .match-list {
+      display: grid;
+      gap: 15px;
+      margin-top: 28px;
+    }
+
+    .match-row {
+      display: grid;
+      grid-template-columns: minmax(150px, 0.55fr) minmax(0, 1.45fr);
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-medium);
+      background: var(--surface-soft);
+    }
+
+    .match-row.is-correct {
+      border-color: #82ba98;
+      background: var(--success-soft);
+    }
+
+    .match-row.is-incorrect {
+      border-color: #d69a9c;
+      background: var(--error-soft);
+    }
+
+    .match-term {
+      font-weight: 800;
+    }
+
+    .match-row select {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 40px 10px 12px;
+      border: 1px solid #bababa;
+      border-radius: var(--radius-small);
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .activity-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .primary-button,
+    .secondary-button {
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: var(--radius-small);
+      font-weight: 800;
+    }
+
+    .primary-button {
+      border: 1px solid var(--purdue-black);
+      background: var(--purdue-black);
+      color: #ffffff;
+    }
+
+    .primary-button:hover {
+      background: #282828;
+    }
+
+    .secondary-button {
+      border: 1px solid #9d8b66;
+      background: transparent;
+      color: var(--purdue-black);
+    }
+
+    .secondary-button:hover {
+      background: #f1eadc;
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 22px;
+      padding: 17px 19px;
+      border-radius: var(--radius-medium);
+      font-weight: 700;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback.success {
+      background: var(--success-soft);
+      color: #175934;
+      border: 1px solid #8ac2a0;
+    }
+
+    .feedback.error {
+      background: var(--error-soft);
+      color: #7f2c2f;
+      border: 1px solid #d5a0a2;
+    }
+
+    .scenario {
+      padding: 36px;
+      border-radius: var(--radius-large);
+      background: var(--purdue-black);
+      color: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .scenario-text {
+      margin: 0 0 26px;
+      color: #e2e2e2;
+      font-size: 1.03rem;
+      line-height: 1.8;
+    }
+
+    .scenario-options {
+      display: grid;
+      gap: 13px;
+    }
+
+    .scenario-option {
+      width: 100%;
+      padding: 17px;
+      border: 1px solid #4d4d4d;
+      border-radius: 12px;
+      background: #181818;
+      color: #ffffff;
+      text-align: left;
+      transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .scenario-option:hover {
+      border-color: var(--purdue-gold);
+      background: #252525;
+    }
+
+    .scenario-option.is-selected {
+      border-color: var(--purdue-gold);
+      background: #2a251d;
+    }
+
+    .scenario-option.is-correct {
+      border-color: #75b98f;
+      background: #183526;
+    }
+
+    .scenario-option.is-incorrect {
+      border-color: #d18689;
+      background: #3b2021;
+    }
+
+    .scenario-feedback {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #171717;
+      color: #dddddd;
+    }
+
+    .scenario-feedback.show {
+      display: block;
+    }
+
+    .scenario-feedback strong {
+      color: var(--purdue-gold);
+    }
+
+    .progress-wrap {
+      margin-top: 42px;
+      padding: 26px;
+      border-radius: var(--radius-large);
+      background: #e8e2d5;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .progress-track {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--purdue-black);
+      transition: width 0.35s ease;
+    }
+
+    .completion-message {
+      display: none;
+      margin-top: 16px;
+      color: #3f3524;
+      font-weight: 700;
+    }
+
+    .completion-message.show {
+      display: block;
+    }
+
+    .takeaway-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .takeaway-card {
+      padding: 24px;
+      border-top: 5px solid var(--purdue-gold);
+      border-radius: var(--radius-medium);
+      background: var(--surface-soft);
+    }
+
+    .takeaway-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer {
+      padding: 24px 20px;
+      background: var(--purdue-black);
+      color: #aaaaaa;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding: 44px 0;
+      }
+
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .terms-grid,
+      .takeaway-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .match-row {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      .lesson-section {
+        padding: 52px 0;
+      }
+
+      .activity-panel,
+      .scenario {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content-width {
+        width: calc(100% - 28px);
+      }
+
+      .term-card,
+      .term-card-inner {
+        min-height: 300px;
+      }
+
+      .activity-actions {
+        display: grid;
+      }
+
+      .primary-button,
+      .secondary-button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .term-card-inner,
+      .progress-bar {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page-shell">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="content-width hero-layout">
+
+        <div>
+          <div class="module-label">Module 1 Learning Activity</div>
+
+          <p class="eyebrow">The Customer Experience</p>
+
+          <h1>Key Terms in Action</h1>
+
+          <p class="hero-copy">
+            Customer experience has its own language. In this activity, you
+            will explore the terms professionals use to describe customer
+            interactions, relationships and perceptions—and then apply those
+            terms to realistic situations.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Activity overview">
+          <div class="hero-card-number">01</div>
+
+          <h2 style="font-size: 1.45rem;">
+            Activity at a Glance
+          </h2>
+
+          <div class="hero-stat">
+            <span class="hero-stat-label">Estimated Time</span>
+            <span class="hero-stat-value">10–15 minutes</span>
+          </div>
+
+          <div class="hero-stat">
+            <span class="hero-stat-label">Key Terms</span>
+            <span class="hero-stat-value">8 customer experience concepts</span>
+          </div>
+
+          <div class="hero-stat">
+            <span class="hero-stat-label">Activities</span>
+            <span class="hero-stat-value">Explore, match and apply</span>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- INTRODUCTION -->
+    <section class="lesson-section">
+      <div class="content-width">
+
+        <div class="section-intro">
+          <p class="eyebrow">Why These Terms Matter</p>
+
+          <h2>A shared vocabulary helps teams create a shared experience.</h2>
+
+          <p>
+            Customer experience involves many departments, decisions and
+            interactions. Understanding the terms below will help you recognize
+            how each part of an organization can influence the customer’s
+            overall perception.
+          </p>
+        </div>
+
+        <div class="instruction-box">
+          <div class="instruction-icon" aria-hidden="true">1</div>
+
+          <p>
+            <strong>Start by exploring each term.</strong> Select a card to
+            reveal its definition and an example from a food or agricultural
+            business setting.
+          </p>
+        </div>
+
+
+        <!-- TERM CARDS -->
+        <div class="terms-grid">
+
+          <article class="term-card" data-term-card>
+            <div class="term-card-inner">
+
+              <div class="term-card-face term-card-front">
+                <div>
+                  <div class="term-number">01</div>
+                  <h3>Customer Experience</h3>
+                  <p class="term-prompt">
+                    What overall impression does the customer develop?
+                  </p>
+                </div>
+
+                <button
+                  class="term-button"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  Reveal Definition
+                </button>
+              </div>
+
+              <div class="term-card-face term-card-back">
+                <p class="definition-label">Definition</p>
+
+                <p class="definition">
+                  The customer’s overall perception of an organization based
+                  on every interaction before, during and after a purchase.
+                </p>
+
+                <p class="example">
+                  <strong>Agricultural example:</strong> A producer’s impression
+                  is shaped by product quality, delivery communication, sales
+                  support and how quickly a problem is resolved.
+                </p>
+
+                <button class="term-button" type="button">
+                  Return to Term
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+
+          <article class="term-card" data-term-card>
+            <div class="term-card-inner">
+
+              <div class="term-card-face term-card-front">
+                <div>
+                  <div class="term-number">02</div>
+                  <h3>Customer Service</h3>
+                  <p class="term-prompt">
+                    How does the organization respond to a specific need?
+                  </p>
+                </div>
+
+                <button
+                  class="term-button"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  Reveal Definition
+                </button>
+              </div>
+
+              <div class="term-card-face term-card-back">
+                <p class="definition-label">Definition</p>
+
+                <p class="definition">
+                  The direct assistance or support an organization provides
+                  before, during or after a customer purchases a product or
+                  service.
+                </p>
+
+                <p class="example">
+                  <strong>Agricultural example:</strong> A service
+                  representative helps a customer identify a replacement part
+                  for equipment during planting season.
+                </p>
+
+                <button class="term-button" type="button">
+                  Return to Term
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+
+          <article class="term-card" data-term-card>
+            <div class="term-card-inner">
+
+              <div class="term-card-face term-card-front">
+                <div>
+                  <div class="term-number">03</div>
+                  <h3>Touchpoint</h3>
+                  <p class="term-prompt">
+                    Where does the customer encounter the organization?
+                  </p>
+                </div>
+
+                <button
+                  class="term-button"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  Reveal Definition
+                </button>
+              </div>
+
+              <div class="term-card-face term-card-back">
+                <p class="definition-label">Definition</p>
+
+                <p class="definition">
+                  Any point at which a customer interacts with an organization,
+                  employee, product, service or communication channel.
+                </p>
+
+                <p class="example">
+                  <strong>Agricultural example:</strong> A website visit,
+                  conversation with a sales representative, invoice, delivery
+                  and service call are all customer touchpoints.
+                </p>
+
+                <button class="term-button" type="button">
+                  Return to Term
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+
+          <article class="term-card" data-term-card>
+            <div class="term-card-inner">
+
+              <div class="term-card-face term-card-front">
+                <div>
+                  <div class="term-number">04</div>
+                  <h3>Customer Journey</h3>
+                  <p class="term-prompt">
+                    What path does the customer take over time?
+                  </p>
+                </div>
+
+                <button
+                  class="term-button"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  Reveal Definition
+                </button>
+              </div>
+
+              <div class="term-card-face term-card-back">
+                <p class="definition-label">Definition</p>
+
+                <p class="definition">
+                  The complete sequence of stages and interactions a customer
+                  experiences throughout a relationship with an organization.
+                </p>
+
+                <p class="example">
+                  <strong>Agricultural example:</strong> A customer researches
+                  a seed product, contacts a dealer, places an order, receives
+                  delivery and later asks for technical support.
+                </p>
+
+                <button class="term-button" type="button">
+                  Return to Term
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+
+          <article class="term-card" data-term-card>
+            <div class="term-card-inner">
+
+              <div class="term-card-face term-card-front">
+                <div>
+                  <div class="term-number">05</div>
+                  <h3>Moment of Truth</h3>
+                  <p class="term-prompt">
+                    Which interaction has an unusually strong impact?
+                  </p>
+                </div>
+
+                <button
+                  class="term-button"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  Reveal Definition
+                </button>
+              </div>
+
+              <div class="term-card-face term-card-back">
+                <p class="definition-label">Definition</p>
+
+                <p class="definition">
+                  A critical interaction that significantly strengthens or
+                  weakens the customer’s perception of an organization.
+                </p>
+
+                <p class="example">
+                  <strong>Agricultural example:</strong> Equipment fails during
+                  harvest, and the supplier’s response determines whether the
+                  customer feels supported or abandoned.
+                </p>
+
+                <button class="term-button" type="button">
+                  Return to Term
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+
+          <article class="term-card" data-term-card>
+            <div class="term-card-inner">
+
+              <div class="term-card-face term-card-front">
+                <div>
+                  <div class="term-number">06</div>
+                  <h3>Customer Friction</h3>
+                  <p class="term-prompt">
+                    What makes the experience more difficult than necessary?
+                  </p>
+                </div>
+
+                <button
+                  class="term-button"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  Reveal Definition
+                </button>
+              </div>
+
+              <div class="term-card-face term-card-back">
+                <p class="definition-label">Definition</p>
+
+                <p class="definition">
+                  Any obstacle, delay, confusion or unnecessary effort that
+                  makes it harder for a customer to accomplish a goal.
+                </p>
+
+                <p class="example">
+                  <strong>Agricultural example:</strong> A customer must call
+                  three departments before finding someone who can confirm an
+                  order’s delivery date.
+                </p>
+
+                <button class="term-button" type="button">
+                  Return to Term
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+
+          <article class="term-card" data-term-card>
+            <div class="term-card-inner">
+
+              <div class="term-card-face term-card-front">
+                <div>
+                  <div class="term-number">07</div>
+                  <h3>Internal Customer</h3>
+                  <p class="term-prompt">
+                    Who inside the organization depends on your work?
+                  </p>
+                </div>
+
+                <button
+                  class="term-button"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  Reveal Definition
+                </button>
+              </div>
+
+              <div class="term-card-face term-card-back">
+                <p class="definition-label">Definition</p>
+
+                <p class="definition">
+                  An employee, team or department within the organization that
+                  relies on another person or team to complete its work.
+                </p>
+
+                <p class="example">
+                  <strong>Agricultural example:</strong> The sales team relies
+                  on operations for accurate inventory information before
+                  making delivery commitments to customers.
+                </p>
+
+                <button class="term-button" type="button">
+                  Return to Term
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+
+          <article class="term-card" data-term-card>
+            <div class="term-card-inner">
+
+              <div class="term-card-face term-card-front">
+                <div>
+                  <div class="term-number">08</div>
+                  <h3>Service Recovery</h3>
+                  <p class="term-prompt">
+                    What happens after the organization makes a mistake?
+                  </p>
+                </div>
+
+                <button
+                  class="term-button"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  Reveal Definition
+                </button>
+              </div>
+
+              <div class="term-card-face term-card-back">
+                <p class="definition-label">Definition</p>
+
+                <p class="definition">
+                  The actions an organization takes to resolve a problem,
+                  restore confidence and rebuild the customer relationship.
+                </p>
+
+                <p class="example">
+                  <strong>Agricultural example:</strong> After sending the wrong
+                  product, the supplier acknowledges the error, arranges urgent
+                  replacement delivery and follows up afterward.
+                </p>
+
+                <button class="term-button" type="button">
+                  Return to Term
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+        <div class="progress-wrap" aria-live="polite">
+          <div class="progress-header">
+            <span>Term Exploration Progress</span>
+            <span id="termProgressText">0 of 8 explored</span>
+          </div>
+
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="Term exploration progress"
+            aria-valuemin="0"
+            aria-valuemax="8"
+            aria-valuenow="0"
+            id="termProgressTrack"
+          >
+            <div class="progress-bar" id="termProgressBar"></div>
+          </div>
+
+          <p class="completion-message" id="termCompletionMessage">
+            Excellent—you have explored all eight key terms. Continue to the
+            matching activity below.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- MATCHING ACTIVITY -->
+    <section class="lesson-section white">
+      <div class="content-width">
+
+        <div class="section-intro">
+          <p class="eyebrow">Activity 2</p>
+
+          <h2>Match the term to the situation.</h2>
+
+          <p>
+            Select the key term that best describes each customer experience
+            situation. You can check your answers and try again.
+          </p>
+        </div>
+
+        <div class="activity-panel">
+
+          <div class="instruction-box">
+            <div class="instruction-icon" aria-hidden="true">2</div>
+
+            <p>
+              Read each situation, choose the best term, and then select
+              <strong>Check My Answers</strong>.
+            </p>
+          </div>
+
+          <div class="match-list">
+
+            <div class="match-row" data-match-row>
+              <div>
+                <div class="match-term">Situation 1</div>
+                <div>
+                  A customer receives three different delivery estimates from
+                  three employees.
+                </div>
+              </div>
+
+              <select
+                aria-label="Select the term for situation 1"
+                data-answer="customer-friction"
+              >
+                <option value="">Choose a term</option>
+                <option value="touchpoint">Touchpoint</option>
+                <option value="customer-friction">Customer Friction</option>
+                <option value="service-recovery">Service Recovery</option>
+                <option value="internal-customer">Internal Customer</option>
+              </select>
+            </div>
+
+
+            <div class="match-row" data-match-row>
+              <div>
+                <div class="match-term">Situation 2</div>
+                <div>
+                  A delayed shipment threatens planting plans, and the
+                  supplier’s response determines whether the relationship
+                  continues.
+                </div>
+              </div>
+
+              <select
+                aria-label="Select the term for situation 2"
+                data-answer="moment-of-truth"
+              >
+                <option value="">Choose a term</option>
+                <option value="customer-journey">Customer Journey</option>
+                <option value="moment-of-truth">Moment of Truth</option>
+                <option value="customer-service">Customer Service</option>
+                <option value="touchpoint">Touchpoint</option>
+              </select>
+            </div>
+
+
+            <div class="match-row" data-match-row>
+              <div>
+                <div class="match-term">Situation 3</div>
+                <div>
+                  The shipping team needs accurate information from inventory
+                  before it can prepare an order.
+                </div>
+              </div>
+
+              <select
+                aria-label="Select the term for situation 3"
+                data-answer="internal-customer"
+              >
+                <option value="">Choose a term</option>
+                <option value="service-recovery">Service Recovery</option>
+                <option value="customer-experience">Customer Experience</option>
+                <option value="internal-customer">Internal Customer</option>
+                <option value="moment-of-truth">Moment of Truth</option>
+              </select>
+            </div>
+
+
+            <div class="match-row" data-match-row>
+              <div>
+                <div class="match-term">Situation 4</div>
+                <div>
+                  After an incorrect order is delivered, the company apologizes,
+                  replaces it immediately and follows up the next day.
+                </div>
+              </div>
+
+              <select
+                aria-label="Select the term for situation 4"
+                data-answer="service-recovery"
+              >
+                <option value="">Choose a term</option>
+                <option value="customer-friction">Customer Friction</option>
+                <option value="service-recovery">Service Recovery</option>
+                <option value="customer-journey">Customer Journey</option>
+                <option value="customer-service">Customer Service</option>
+              </select>
+            </div>
+
+
+            <div class="match-row" data-match-row>
+              <div>
+                <div class="match-term">Situation 5</div>
+                <div>
+                  A customer first sees an advertisement, visits a website,
+                  speaks with a representative, purchases and later requests
+                  support.
+                </div>
+              </div>
+
+              <select
+                aria-label="Select the term for situation 5"
+                data-answer="customer-journey"
+              >
+                <option value="">Choose a term</option>
+                <option value="touchpoint">Touchpoint</option>
+                <option value="customer-service">Customer Service</option>
+                <option value="customer-journey">Customer Journey</option>
+                <option value="moment-of-truth">Moment of Truth</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="activity-actions">
+            <button
+              class="primary-button"
+              type="button"
+              id="checkMatches"
+            >
+              Check My Answers
+            </button>
+
+            <button
+              class="secondary-button"
+              type="button"
+              id="resetMatches"
+            >
+              Reset Activity
+            </button>
+          </div>
+
+          <div
+            class="feedback"
+            id="matchFeedback"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SCENARIO -->
+    <section class="lesson-section">
+      <div class="content-width">
+
+        <div class="section-intro">
+          <p class="eyebrow">Activity 3</p>
+
+          <h2>Apply the terms to a customer scenario.</h2>
+
+          <p>
+            Read the situation and select the response that would most
+            effectively improve the customer experience.
+          </p>
+        </div>
+
+        <div class="scenario">
+
+          <p class="eyebrow" style="color: var(--purdue-gold);">
+            Scenario Challenge
+          </p>
+
+          <h2 style="font-size: clamp(1.7rem, 4vw, 2.25rem);">
+            A critical delivery is late.
+          </h2>
+
+          <p class="scenario-text">
+            A crop input customer expected a delivery early Monday morning.
+            By noon, the order has not arrived. The customer has called twice
+            and has received no clear update. The delay may affect work planned
+            for that afternoon.
+          </p>
+
+          <p style="font-weight: 800;">
+            Which response best reduces friction and supports service recovery?
+          </p>
+
+          <div class="scenario-options" id="scenarioOptions">
+
+            <button
+              class="scenario-option"
+              type="button"
+              data-correct="false"
+              data-feedback="This response leaves the customer without ownership, clarity or a next step. Transferring responsibility can add more friction."
+            >
+              Tell the customer that shipping is handled by another department
+              and provide the main office phone number.
+            </button>
+
+            <button
+              class="scenario-option"
+              type="button"
+              data-correct="true"
+              data-feedback="Correct. This response acknowledges the situation, takes ownership, provides a clear next step and establishes a communication commitment."
+            >
+              Acknowledge the urgency, contact the shipping team directly,
+              provide the best available update and promise a specific time for
+              the next communication.
+            </button>
+
+            <button
+              class="scenario-option"
+              type="button"
+              data-correct="false"
+              data-feedback="An apology is useful, but without ownership or a defined next step, the customer still has to manage the problem alone."
+            >
+              Apologize for the delay and ask the customer to call back later
+              if the delivery has still not arrived.
+            </button>
+
+            <button
+              class="scenario-option"
+              type="button"
+              data-correct="false"
+              data-feedback="Avoiding communication may make the customer feel ignored and can turn a delay into a much larger trust problem."
+            >
+              Wait until the company has complete information before
+              communicating with the customer again.
+            </button>
+
+          </div>
+
+          <div
+            class="scenario-feedback"
+            id="scenarioFeedback"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- TAKEAWAYS -->
+    <section class="lesson-section white">
+      <div class="content-width">
+
+        <div class="section-intro">
+          <p class="eyebrow">Key Takeaways</p>
+
+          <h2>Customer experience is created one interaction at a time.</h2>
+
+          <p>
+            Keep these three ideas in mind as you continue through the module.
+          </p>
+        </div>
+
+        <div class="takeaway-grid">
+
+          <div class="takeaway-card">
+            <h3>Experience Is Cumulative</h3>
+            <p>
+              Customers form opinions through the complete journey, not only
+              through one service interaction.
+            </p>
+          </div>
+
+          <div class="takeaway-card">
+            <h3>Every Role Contributes</h3>
+            <p>
+              Internal communication and coordination affect what the external
+              customer ultimately experiences.
+            </p>
+          </div>
+
+          <div class="takeaway-card">
+            <h3>Recovery Builds Trust</h3>
+            <p>
+              A thoughtful response to a problem can strengthen a relationship
+              rather than simply repair a transaction.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <footer class="footer">
+      Module 1: The Customer Experience · Key Terms in Action
+    </footer>
+
+  </main>
+
+
+  <script>
+    (function () {
+      "use strict";
+
+      const termCards = Array.from(
+        document.querySelectorAll("[data-term-card]")
+      );
+
+      const exploredCards = new Set();
+
+      const progressText = document.getElementById("termProgressText");
+      const progressBar = document.getElementById("termProgressBar");
+      const progressTrack = document.getElementById("termProgressTrack");
+      const completionMessage = document.getElementById(
+        "termCompletionMessage"
+      );
+
+      function updateTermProgress() {
+        const explored = exploredCards.size;
+        const total = termCards.length;
+        const percentage = total > 0 ? (explored / total) * 100 : 0;
+
+        progressText.textContent =
+          explored + " of " + total + " explored";
+
+        progressBar.style.width = percentage + "%";
+        progressTrack.setAttribute("aria-valuenow", String(explored));
+
+        if (explored === total) {
+          completionMessage.classList.add("show");
+        }
+      }
+
+      termCards.forEach(function (card, index) {
+        const buttons = card.querySelectorAll(".term-button");
+
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const isFlipped = card.classList.toggle("is-flipped");
+            const frontButton = card.querySelector(
+              ".term-card-front .term-button"
+            );
+
+            frontButton.setAttribute(
+              "aria-expanded",
+              isFlipped ? "true" : "false"
+            );
+
+            if (isFlipped) {
+              exploredCards.add(index);
+              updateTermProgress();
+            }
+          });
+        });
+      });
+
+
+      const matchRows = Array.from(
+        document.querySelectorAll("[data-match-row]")
+      );
+
+      const checkMatchesButton = document.getElementById("checkMatches");
+      const resetMatchesButton = document.getElementById("resetMatches");
+      const matchFeedback = document.getElementById("matchFeedback");
+
+      checkMatchesButton.addEventListener("click", function () {
+        let correctCount = 0;
+        let unansweredCount = 0;
+
+        matchRows.forEach(function (row) {
+          const select = row.querySelector("select");
+          const correctAnswer = select.dataset.answer;
+          const selectedAnswer = select.value;
+
+          row.classList.remove("is-correct", "is-incorrect");
+
+          if (!selectedAnswer) {
+            unansweredCount += 1;
+            row.classList.add("is-incorrect");
+            return;
+          }
+
+          if (selectedAnswer === correctAnswer) {
+            correctCount += 1;
+            row.classList.add("is-correct");
+          } else {
+            row.classList.add("is-incorrect");
+          }
+        });
+
+        matchFeedback.className = "feedback show";
+
+        if (correctCount === matchRows.length) {
+          matchFeedback.classList.add("success");
+          matchFeedback.textContent =
+            "Excellent work. You matched all five situations correctly.";
+        } else {
+          matchFeedback.classList.add("error");
+
+          if (unansweredCount > 0) {
+            matchFeedback.textContent =
+              "You answered " +
+              correctCount +
+              " of " +
+              matchRows.length +
+              " correctly. Complete every situation and review the highlighted rows.";
+          } else {
+            matchFeedback.textContent =
+              "You answered " +
+              correctCount +
+              " of " +
+              matchRows.length +
+              " correctly. Review the highlighted rows and try again.";
+          }
+        }
+      });
+
+      resetMatchesButton.addEventListener("click", function () {
+        matchRows.forEach(function (row) {
+          row.classList.remove("is-correct", "is-incorrect");
+          row.querySelector("select").value = "";
+        });
+
+        matchFeedback.className = "feedback";
+        matchFeedback.textContent = "";
+      });
+
+
+      const scenarioOptions = Array.from(
+        document.querySelectorAll(".scenario-option")
+      );
+
+      const scenarioFeedback = document.getElementById(
+        "scenarioFeedback"
+      );
+
+      scenarioOptions.forEach(function (option) {
+        option.addEventListener("click", function () {
+          scenarioOptions.forEach(function (item) {
+            item.classList.remove(
+              "is-selected",
+              "is-correct",
+              "is-incorrect"
+            );
+          });
+
+          option.classList.add("is-selected");
+
+          const isCorrect = option.dataset.correct === "true";
+          const feedback = option.dataset.feedback;
+
+          if (isCorrect) {
+            option.classList.add("is-correct");
+            scenarioFeedback.innerHTML =
+              "<strong>Strong response.</strong> " + feedback;
+          } else {
+            option.classList.add("is-incorrect");
+            scenarioFeedback.innerHTML =
+              "<strong>Consider another response.</strong> " + feedback;
+          }
+
+          scenarioFeedback.classList.add("show");
+        });
+      });
+
+      updateTermProgress();
+    })();
+  </script>
+</body>
+</html>
+```
